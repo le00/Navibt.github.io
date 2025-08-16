@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NaviBT — Coming Soon</title>
+  <meta name="description" content="NaviBT helps companies turn messy business travel data into decisions. Coming soon." />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="NaviBT — Coming Soon" />
+  <meta property="og:description" content="Business travel data, cleaned and put to work." />
+  <meta property="og:image" content="https://navibt.com/assets/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NaviBT — Coming Soon" />
+  <meta name="twitter:description" content="Business travel data, cleaned and put to work." />
+  <meta name="twitter:image" content="https://navibt.com/assets/og-image.png" />
+  <!-- Optional: Plausible analytics (uncomment and replace domain when ready) -->
+  <!-- <script defer data-domain="navibt.com" src="https://plausible.io/js/script.js"></script> -->
+  <style>
+    :root{
+      --bg:#0f172a;
+      --panel:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#38bdf8;
+      --accent-2:#60a5fa;
+      --ok:#22c55e;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% -10%, #0b1220 10%, #0f172a 60%, #111827 100%);
+      color:var(--text);
+      display:flex;align-items:center;justify-content:center;
+      padding:32px;
+    }
+    .card{
+      width:min(900px,100%);
+      background: rgba(17,24,39,0.6);
+      border:1px solid rgba(148,163,184,0.15);
+      border-radius:20px;
+      padding:28px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+    header{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+    header img{height:36px;width:36px}
+    header h1{font-size:1.25rem;margin:0;letter-spacing:0.2px}
+    .badge{
+      display:inline-block;
+      font-size:0.75rem;color:#c7d2fe;
+      border:1px dashed rgba(99,102,241,0.5);
+      padding:4px 8px;border-radius:999px;
+      margin-top:6px;
+    }
+    .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:center}
+    @media (max-width: 800px){ .hero{grid-template-columns:1fr} }
+    h2{font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.2rem); margin:10px 0 8px}
+    p{color:var(--muted);line-height:1.6;margin:0 0 8px}
+    ul{margin:12px 0 0;padding-left:18px;color:var(--muted)}
+    .panel{
+      border:1px solid rgba(148,163,184,0.12);
+      background: linear-gradient(180deg, rgba(17,24,39,0.8), rgba(15,23,42,0.8));
+      border-radius:16px;padding:18px;
+    }
+    .grid{display:grid;grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+    @media (max-width: 800px){ .grid{grid-template-columns:1fr} }
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid rgba(148,163,184,0.18);color:var(--text);font-size:0.9rem}
+    .dot{height:8px;width:8px;border-radius:50%;background:var(--ok)}
+    .form{
+      display:flex; gap:10px; margin-top:12px;
+      background: rgba(2,6,23,0.5); border:1px solid rgba(148,163,184,0.15); padding:8px; border-radius:12px;
+    }
+    .form input[type="email"]{
+      flex:1; padding:12px 14px; border:0; outline:none;
+      background:transparent; color:var(--text); font-size:1rem;
+    }
+    .form button{
+      padding:12px 16px; border-radius:10px; border:1px solid rgba(148,163,184,0.25);
+      background: linear-gradient(90deg, var(--accent), var(--accent-2)); color:#08121f;
+      font-weight:700; cursor:pointer;
+    }
+    footer{margin-top:14px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:0.9rem}
+    .small{font-size:0.85rem;color:var(--muted)}
+    .success{color:#bbf7d0}
+    .error{color:#fecaca}
+    .screens{
+      border:1px solid rgba(148,163,184,0.12);
+      background: radial-gradient(600px 400px at 10% -20%, rgba(59,130,246,0.15), transparent 60%),
+                  radial-gradient(600px 400px at 120% 120%, rgba(56,189,248,0.12), transparent 60%);
+      border-radius:16px; padding:16px; text-align:center;
+    }
+    .screens img{width:100%; border-radius:10px; border:1px solid rgba(148,163,184,0.2)}
+    a{color:#93c5fd;text-decoration:none}
+    a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <header>
+      <img src="/assets/logo.svg" alt="NaviBT logo" />
+      <div>
+        <h1>NaviBT</h1>
+        <span class="badge">Coming soon</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h2>Let business travel data navigate your next decision.</h2>
+        <p>We help companies clean, connect, and activate their business travel data—so finance, procurement, and travel teams can make better calls faster.</p>
+        <div class="grid">
+          <div class="panel">
+            <div class="chip"><span class="dot"></span> Data quality & harmonization</div><br/>
+            <div class="chip"><span class="dot"></span> Benchmarking & spend analytics</div><br/>
+            <div class="chip"><span class="dot"></span> Traveler experience insights</div>
+          </div>
+          <div class="panel">
+            <p class="small">Get launch updates and early access:</p>
+            <form id="notify" class="form" action="https://formspree.io/f/yourid" method="POST">
+              <input type="email" name="email" placeholder="you@company.com" required aria-label="Email address" />
+              <input type="hidden" name="source" value="navibt-coming-soon" />
+              <button type="submit">Notify me</button>
+            </form>
+            <p id="msg" class="small" role="status" aria-live="polite"></p>
+            <p class="small">Prefer email? <a href="mailto:hello@navibt.com?subject=Early%20access%20request">hello@navibt.com</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="screens">
+        <img src="/assets/mock-screenshot.png" alt="Preview illustration" />
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> NaviBT</div>
+      <div>
+        <a href="https://github.com" rel="noopener">GitHub</a> ·
+        <a href="#" aria-disabled="true">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const form = document.getElementById('notify');
+    const msg = document.getElementById('msg');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = 'Sending…';
+      try{
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method:'POST', body: fd, headers:{ 'Accept': 'application/json' }});
+        if (res.ok){
+          msg.textContent = 'Thanks — we'll be in touch.';
+          msg.className = 'small success';
+          form.reset();
+        } else {
+          msg.textContent = 'Something went wrong. Email us at hello@navibt.com';
+          msg.className = 'small error';
+        }
+      }catch(err){
+        msg.textContent = 'Network error. Please try again later.';
+        msg.className = 'small error';
+      }
+    });
+  </script>
+</body>
+</html>
