@@ -13,17 +13,20 @@
   <meta property="og:title" content="NaviBT - Coming Soon">
   <meta property="og:description" content="Helping companies navigate with Business Travel Data.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://navibt.github.io/logo.svg"> <!-- update if different path -->
+  <meta property="og:image" content="https://navibt.github.io/logo.png"> <!-- update if different path -->
   <meta property="og:url" content="https://navibt.github.io">
   
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <style>
+    :root {
+      --bg-color: #fff;
+    }
     body {
       margin: 0;
       padding: 0;
-      background: #fff;
+      background: var(--bg-color);
       color: #222;
       font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       display: flex;
@@ -36,7 +39,7 @@
     .logo {
       max-width: 240px;
       margin-bottom: 25px;
-      background: #fff;
+      background: var(--bg-color);
     }
     h1 {
       font-size: 2.5rem;
@@ -57,7 +60,7 @@
 </head>
 <body>
   <!-- Replace with your NaviBT logo -->
-  <img src="logo.svg" alt="NaviBT Logo" class="logo">
+  <img src="logo.png" alt="NaviBT Logo" class="logo">
   <h1>Coming Soon</h1>
   <p id="message">Charting a better course with Business Travel Data...</p>
 
