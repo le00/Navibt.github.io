@@ -1,373 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NaviBT — Business Travel Consulting</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaviBT - Coming Soon</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="NaviBT helps companies navigate complex problems using their Business Travel Data. Coming soon.">
+  <meta name="author" content="NaviBT">
+  
+  <!-- Social Sharing -->
+  <meta property="og:title" content="NaviBT - Coming Soon">
+  <meta property="og:description" content="Helping companies navigate with Business Travel Data.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://navibt.github.io/logo.svg"> <!-- update if different path -->
+  <meta property="og:url" content="https://navibt.github.io">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  :root {
-    --ink: #0d0d0f;
-    --paper: #f7f5f0;
-    --teal: #0a7b6b;
-    --teal-light: #0e9e88;
-    --teal-pale: #e4f5f2;
-    --amber: #e8a040;
-    --mist: #edeae4;
-    --mid: #6b6860;
-    --rule: rgba(13,13,15,0.1);
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--paper);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem 5%;
-    background: rgba(247,245,240,0.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--rule);
-    transition: box-shadow .3s;
-  }
-  nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
-  .nav-logo { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
-  .nav-logo span { color: var(--teal); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: .875rem; font-weight: 500; color: var(--mid); text-decoration: none; letter-spacing: .02em; transition: color .2s; }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-cta { background: var(--teal); color: #fff !important; padding: .5rem 1.25rem; border-radius: 100px; font-weight: 500 !important; font-size: .875rem !important; transition: background .2s, transform .15s !important; }
-  .nav-cta:hover { background: var(--teal-light) !important; transform: translateY(-1px); }
-
-  /* HERO */
-  #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; overflow: hidden; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6% 5% 6% 8%; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: .5rem;
-    background: var(--teal-pale); color: var(--teal);
-    font-size: .75rem; font-weight: 600; letter-spacing: .08em;
-    text-transform: uppercase; padding: .375rem .875rem;
-    border-radius: 100px; margin-bottom: 2rem; width: fit-content;
-  }
-  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(1.4); } }
-  .hero-h1 { font-family: var(--serif); font-size: clamp(2.5rem,4.5vw,4rem); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 1.5rem; }
-  .hero-h1 em { font-style: italic; color: var(--teal); }
-  .hero-sub { font-size: 1.1rem; color: var(--mid); max-width: 420px; line-height: 1.7; margin-bottom: 2.5rem; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-  .btn-primary { background: var(--ink); color: var(--paper); padding: .875rem 2rem; border-radius: 100px; font-family: var(--sans); font-size: .9rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .15s; }
-  .btn-primary:hover { background: var(--teal); transform: translateY(-2px); }
-  .btn-ghost { background: transparent; color: var(--ink); padding: .875rem 2rem; border-radius: 100px; font-family: var(--sans); font-size: .9rem; font-weight: 500; text-decoration: none; border: 1.5px solid var(--rule); transition: border-color .2s, transform .15s; }
-  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
-
-  .hero-right { position: relative; background: var(--ink); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(10,123,107,.15) 1px,transparent 1px), linear-gradient(90deg,rgba(10,123,107,.15) 1px,transparent 1px); background-size: 48px 48px; animation: gridshift 20s linear infinite; }
-  @keyframes gridshift { from { transform: translateY(0); } to { transform: translateY(48px); } }
-  .hero-card-stack { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 1rem; padding: 2rem; width: 340px; }
-  .stat-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 1.25rem 1.5rem; backdrop-filter: blur(8px); animation: floatIn .8s ease both; }
-  .stat-card:nth-child(1) { animation-delay: .1s; }
-  .stat-card:nth-child(2) { animation-delay: .25s; margin-left: 2rem; }
-  .stat-card:nth-child(3) { animation-delay: .4s; }
-  @keyframes floatIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-  .stat-label { font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: .25rem; }
-  .stat-value { font-family: var(--serif); font-size: 1.75rem; color: #fff; line-height: 1; }
-  .stat-value span { color: var(--amber); }
-  .stat-desc { font-size: .8rem; color: rgba(255,255,255,.5); margin-top: .25rem; }
-
-  /* TICKER */
-  .ticker { background: var(--teal); color: #fff; padding: .7rem 0; overflow: hidden; white-space: nowrap; }
-  .ticker-inner { display: inline-flex; gap: 4rem; animation: ticker 30s linear infinite; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .ticker-item { font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; opacity: .9; display: flex; align-items: center; gap: 1rem; }
-  .ticker-item::after { content: '◆'; font-size: .5rem; opacity: .6; }
-
-  /* SECTIONS */
-  section { padding: 6rem 8%; }
-  .section-label { font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
-  .section-h2 { font-family: var(--serif); font-size: clamp(1.9rem,3vw,2.75rem); line-height: 1.15; letter-spacing: -.02em; color: var(--ink); max-width: 560px; }
-  .section-h2 em { font-style: italic; color: var(--teal); }
-
-  /* SERVICES */
-  #services { background: var(--mist); }
-  .services-header { margin-bottom: 3.5rem; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.5px; background: var(--rule); border: 1px solid var(--rule); border-radius: 20px; overflow: hidden; }
-  .service-card { background: var(--mist); padding: 2.5rem; transition: background .25s; position: relative; overflow: hidden; }
-  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
-  .service-card:hover { background: #fff; }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 1.4rem; }
-  .service-title { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); margin-bottom: .75rem; line-height: 1.2; }
-  .service-desc { font-size: .9rem; color: var(--mid); line-height: 1.65; }
-
-  /* WHY */
-  #why { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .why-right { display: flex; flex-direction: column; gap: 1.5rem; }
-  .why-item { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem; border-radius: 16px; border: 1px solid transparent; transition: border-color .2s, background .2s; }
-  .why-item:hover { border-color: var(--rule); background: var(--mist); }
-  .why-number { font-family: var(--serif); font-size: 2rem; color: var(--teal); opacity: .35; line-height: 1; min-width: 2rem; text-align: center; }
-  .why-text h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin-bottom: .4rem; }
-  .why-text p { font-size: .88rem; color: var(--mid); line-height: 1.65; }
-
-  /* PROCESS */
-  #process { background: var(--ink); color: #fff; }
-  #process .section-label { color: var(--amber); }
-  #process .section-h2 { color: #fff; max-width: 100%; }
-  #process .section-h2 em { color: var(--teal-light); }
-  .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; overflow: hidden; margin-top: 3rem; }
-  .step { background: var(--ink); padding: 2rem 1.75rem; transition: background .25s; }
-  .step:hover { background: #1a1a1c; }
-  .step-num { font-family: var(--serif); font-size: 3rem; color: rgba(255,255,255,.08); line-height: 1; margin-bottom: .75rem; }
-  .step-title { font-family: var(--serif); font-size: 1.1rem; color: #fff; margin-bottom: .6rem; }
-  .step-desc { font-size: .83rem; color: rgba(255,255,255,.45); line-height: 1.65; }
-  .step-accent { display: inline-block; width: 24px; height: 2px; background: var(--teal-light); margin-bottom: .75rem; }
-
-  /* CONTACT */
-  #contact { background: var(--teal); text-align: center; padding: 6rem 8%; position: relative; overflow: hidden; }
-  #contact::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size: 40px 40px; }
-  #contact .section-label { color: rgba(255,255,255,.6); }
-  #contact .section-h2 { color: #fff; max-width: 100%; margin: 0 auto 1.5rem; }
-  #contact .section-h2 em { color: var(--amber); }
-  .contact-sub { color: rgba(255,255,255,.75); font-size: 1.05rem; max-width: 480px; margin: 0 auto 2.5rem; }
-  .contact-form { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
-  .contact-input { padding: .875rem 1.5rem; border-radius: 100px; font-family: var(--sans); font-size: .95rem; background: rgba(255,255,255,.15); color: #fff; outline: none; width: 280px; border: 1px solid rgba(255,255,255,.2); transition: background .2s, border-color .2s; }
-  .contact-input::placeholder { color: rgba(255,255,255,.55); }
-  .contact-input:focus { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.5); }
-  .btn-white { background: #fff; color: var(--teal); padding: .875rem 2rem; border-radius: 100px; font-family: var(--sans); font-size: .9rem; font-weight: 600; border: none; cursor: pointer; transition: background .2s, transform .15s; white-space: nowrap; }
-  .btn-white:hover { background: var(--paper); transform: translateY(-2px); }
-
-  /* FOOTER */
-  footer { background: var(--ink); color: rgba(255,255,255,.4); padding: 3rem 8%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: var(--serif); font-size: 1.3rem; color: #fff; text-decoration: none; }
-  .footer-logo span { color: var(--teal-light); }
-  footer p { font-size: .8rem; }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a { font-size: .8rem; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
-  .footer-links a:hover { color: #fff; }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    #hero { grid-template-columns: 1fr; }
-    .hero-right { min-height: 300px; }
-    #why { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    nav .nav-links { display: none; }
-  }
-  @media (max-width: 600px) {
-    section { padding: 4rem 5%; }
-    .process-steps { grid-template-columns: 1fr; }
-    #hero { padding-top: 70px; }
-    .hero-left { padding: 3rem 5%; }
-    footer { flex-direction: column; text-align: center; }
-  }
-
-  /* REVEAL */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-</style>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #222;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .logo {
+      max-width: 240px;
+      margin-bottom: 25px;
+      background: #fff;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-top: 12px;
+      color: #555;
+    }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
+  <!-- Replace with your NaviBT logo -->
+  <img src="logo.svg" alt="NaviBT Logo" class="logo">
+  <h1>Coming Soon</h1>
+  <p id="message">Charting a better course with Business Travel Data...</p>
 
-<nav id="navbar">
-  <a href="#" class="nav-logo">Navi<span>BT</span></a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why">Why NaviBT</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
-  </ul>
-</nav>
+  <footer>© <span id="year"></span> NaviBT</footer>
 
-<section id="hero">
-  <div class="hero-left">
-    <div class="hero-badge">Business Travel Consulting</div>
-    <h1 class="hero-h1">Navigate every<br>journey with <em>clarity</em><br>and confidence.</h1>
-    <p class="hero-sub">NaviBT helps organizations build smarter, safer, and more cost-effective business travel programs — from policy design to duty of care.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Start a Conversation</a>
-      <a href="#services" class="btn-ghost">Explore Services</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-grid"></div>
-    <div class="hero-card-stack">
-      <div class="stat-card">
-        <div class="stat-label">Average Client Savings</div>
-        <div class="stat-value"><span>23%</span></div>
-        <div class="stat-desc">reduction in travel spend</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Policy Compliance</div>
-        <div class="stat-value">95<span>%</span></div>
-        <div class="stat-desc">average rate post-engagement</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Duty of Care Coverage</div>
-        <div class="stat-value"><span>24/7</span></div>
-        <div class="stat-desc">traveler safety frameworks</div>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    // Auto update year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Travel Policy Consulting</span>
-    <span class="ticker-item">Cost Optimization</span>
-    <span class="ticker-item">Duty of Care</span>
-    <span class="ticker-item">RFP &amp; Compliance Support</span>
-    <span class="ticker-item">Vendor Strategy</span>
-    <span class="ticker-item">Program Audits</span>
-    <span class="ticker-item">Travel Policy Consulting</span>
-    <span class="ticker-item">Cost Optimization</span>
-    <span class="ticker-item">Duty of Care</span>
-    <span class="ticker-item">RFP &amp; Compliance Support</span>
-    <span class="ticker-item">Vendor Strategy</span>
-    <span class="ticker-item">Program Audits</span>
-  </div>
-</div>
-
-<section id="services">
-  <div class="services-header reveal">
-    <p class="section-label">What We Do</p>
-    <h2 class="section-h2">Expert guidance for every dimension of <em>business travel</em></h2>
-  </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <div class="service-icon">🛡️</div>
-      <h3 class="service-title">Traveler Safety &amp; Duty of Care</h3>
-      <p class="service-desc">We help you build robust frameworks to protect your people on the road — risk assessments, crisis protocols, real-time tracking integration, and insurance alignment.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📋</div>
-      <h3 class="service-title">Travel Policy Consulting</h3>
-      <p class="service-desc">Craft clear, enforceable travel policies that balance employee experience with organizational control — designed for your culture, size, and compliance needs.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">💰</div>
-      <h3 class="service-title">Cost Optimization</h3>
-      <p class="service-desc">Uncover hidden savings through spend analysis, preferred supplier negotiations, booking behavior coaching, and smarter approval workflows.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📑</div>
-      <h3 class="service-title">Compliance &amp; RFP Support</h3>
-      <p class="service-desc">Navigate complex RFP processes with confidence. We scope requirements, evaluate vendor proposals, and ensure your travel program meets all regulatory and internal compliance standards.</p>
-    </div>
-  </div>
-</section>
-
-<section id="why">
-  <div class="why-left reveal">
-    <p class="section-label">Why NaviBT</p>
-    <h2 class="section-h2">We don't just advise — we <em>build</em> programs that last</h2>
-    <p style="color:var(--mid);font-size:.95rem;margin-top:1.25rem;line-height:1.75;max-width:420px;">Most travel issues aren't booking problems — they're structural ones. NaviBT goes beneath the surface to diagnose and fix the root causes, so improvements stick.</p>
-  </div>
-  <div class="why-right reveal">
-    <div class="why-item">
-      <div class="why-number">01</div>
-      <div class="why-text"><h3>Deep Industry Expertise</h3><p>Decades of combined experience across corporate travel management, vendor relations, and global mobility mean you get real-world insight, not textbook advice.</p></div>
-    </div>
-    <div class="why-item">
-      <div class="why-number">02</div>
-      <div class="why-text"><h3>Tailored to Your Organization</h3><p>No cookie-cutter frameworks. Every engagement starts with listening — your goals, your travelers, your constraints — and ends with solutions built for you.</p></div>
-    </div>
-    <div class="why-item">
-      <div class="why-number">03</div>
-      <div class="why-text"><h3>Measurable Outcomes</h3><p>We define success in numbers. Cost reduction targets, compliance rates, and safety metrics are built into every project from day one.</p></div>
-    </div>
-    <div class="why-item">
-      <div class="why-number">04</div>
-      <div class="why-text"><h3>End-to-End Partnership</h3><p>From initial audit to final implementation and beyond — we stay engaged to ensure recommendations translate into lasting results.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="process">
-  <p class="section-label reveal">How We Work</p>
-  <h2 class="section-h2 reveal">A clear path from <em>challenge</em> to solution</h2>
-  <div class="process-steps reveal">
-    <div class="step">
-      <div class="step-num">01</div>
-      <div class="step-accent"></div>
-      <div class="step-title">Discovery</div>
-      <p class="step-desc">We start with a deep-dive audit of your current travel program — spend data, policies, supplier contracts, and traveler feedback.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <div class="step-accent"></div>
-      <div class="step-title">Strategy Design</div>
-      <p class="step-desc">We design a tailored roadmap with clear priorities — quick wins alongside longer-term structural improvements.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <div class="step-accent"></div>
-      <div class="step-title">Implementation</div>
-      <p class="step-desc">We work alongside your team to roll out changes — policy updates, vendor negotiations, training, and system configurations.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <div class="step-accent"></div>
-      <div class="step-title">Measure &amp; Refine</div>
-      <p class="step-desc">We track outcomes against agreed KPIs, iterate on what's working, and provide ongoing advisory support as your needs evolve.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <p class="section-label">Get Started</p>
-  <h2 class="section-h2">Ready to build a smarter<br>travel program? <em>Let's talk.</em></h2>
-  <p class="contact-sub">Tell us a little about your situation and we'll set up a no-obligation discovery call — usually within 48 hours.</p>
-  <div class="contact-form">
-    <input class="contact-input" type="email" placeholder="Your work email">
-    <button class="btn-white">Request a Consultation</button>
-  </div>
-  <p style="color:rgba(255,255,255,.45);font-size:.78rem;margin-top:1.25rem;position:relative;z-index:2;">Or reach us directly at <strong style="color:rgba(255,255,255,.75);">hello@navibt.com</strong></p>
-</section>
-
-<footer>
-  <a href="#" class="footer-logo">Navi<span>BT</span></a>
-  <p>&copy; 2025 NaviBT Consulting. All rights reserved.</p>
-  <div class="footer-links">
-    <a href="#services">Services</a>
-    <a href="#why">About</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
-  </div>
-</footer>
-
-<script>
-  const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
-</script>
+    // Rotate clever placeholder messages
+    const messages = [
+      "Mapping out the future of travel analytics...",
+      "Calibrating compasses and algorithms...",
+      "Packing bags full of business insights..."
+    ];
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % messages.length;
+      document.getElementById("message").textContent = messages[idx];
+    }, 3000);
+  </script>
 </body>
 </html>
